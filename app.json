@@ -1,0 +1,17 @@
+{
+  "name": "BreezyBudgeting",
+  "displayName": "BreezyBudgeting",
+  "expo": {
+    "name": "BreezyBudgeting",
+    "slug": "BreezyBudgeting",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
