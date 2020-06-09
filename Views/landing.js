@@ -1,38 +1,58 @@
 import * as React from 'react';
-import { Platform, StyleSheet, View, Text, TextInput, Image } from 'react-native';
-
-const instructions = Platform.select({
-    ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-    android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-  });
+import Main from './main';
+import { Platform, StyleSheet, View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
+import '../helpers/ColorsConfig'
 
 export default function Landing({budget, setBudget}) {
     if (budget == undefined) {
         let month = 0;
         let setMonthly = (value) => month = value; 
+        function onSubmit() {
+            if (month == 0 || month < 0) {
+                Alert.alert("Invalid Input", "Please enter an amount larger than 0");
+            }
+            else {
+                Alert.alert(
+                    "Confirm Amount", 
+                    `Set monthly budget to $${month}`,
+                    [
+                        {
+                            text: 'Cancel'
+                        },
+                        {
+                            text: 'Submit',
+                            onPress: () => setBudget(month)
+                        }
+                    ]
+                    )
+            }
+        }
+
         return (
-            <View style={styles.container}> 
-                <Text style={styles.title}> Welcome! </Text>
-                <Text style={styles.text}> To get started, please set your monthly budget</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="$$$"
-                    type="number" /* Figure out how to get money input here */
-                    onChangeText={text => setMonthly(text)}
-                    defaultValue=""
-                />
-                <Image source={require('../assets/money.png')} style={{ width: 307.5, height: 200}}/>
-                {/* Next Button here */}
-            </View> 
+            <>
+                <View style={styles.container}> 
+                    <Text style={styles.title}> Welcome! </Text>
+                    <Text style={styles.text}> To get started, please set your monthly budget</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="$$$"
+                        type="number" /* Figure out how to get money input here */
+                        onChangeText={text => setMonthly(text)}
+                        defaultValue=""
+                        keyboardType="decimal-pad"
+                        inlineImageLeft="../assets/money-bag.png"
+                    />
+                    <Image source={require('../assets/wallet.png')} style={{ width: 307.5, height: 200}}/>
+                </View>
+                <TouchableOpacity style={styles.button} onPress={onSubmit}>
+                    <Text style={styles.buttonText}>Next >>></Text>
+                </TouchableOpacity>
+            </>
         );
     }
     else {
         return (
-            <View style={styles.container}>
-                <Text style={styles.title}>Welcome to React Native!</Text>
-                <Text style={styles.text}>To get started, edit App.js</Text>
-                <Text style={styles.text}>{instructions}</Text>
-            </View>
+            <Main budget={budget} setBudget={setBudget} />
         );
     }   
 }
@@ -42,31 +62,44 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#282e2e', /* Rethink these colors. make it easy to play around */
+      backgroundColor: background,
       
     },
     title: {
       fontSize: 25,
       textAlign: 'center',
       margin: 10,
-      color: '#FFFFFF',
+      marginTop: 50,
+      color: text,
       fontFamily: 'Roboto' /* Figure out how to import custom fonts" */
     },
     text: {
       textAlign: 'center',
-      color: '#FFFFFF',
+      color: text,
       marginBottom: 5,
     },
     input: {
-        color: '#FFFFFF',
+        color: primary,
         justifyContent: 'center',
         alignItems: 'center',
         height: 40,
         width: 120,
-        backgroundColor: '#5e5e5e',
+        borderWidth: 2,
         borderRadius: 10,
+        borderColor: primary,
         margin: 35,
         textAlign: 'center',
+    },
+    button: {
+        height: 75,
+        backgroundColor: primary,
+        justifyContent: 'center', 
+        alignItems: 'center',
+    },
+    buttonText: {
+        fontSize: 20,
+        color: background,
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
-
 });
