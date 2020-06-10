@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Main from './main';
+import Main from './BudgetPage';
 import { Platform, StyleSheet, View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
 import '../helpers/ColorsConfig'
+import BudgetModel from '../models/BudgetModel'
 
-export default function Landing({budget, setBudget}) {
-    if (budget == undefined) {
+export default function Landing({budgetList, setBudgetList}) {
+    if (!Array.isArray(budgetList) || !budgetList.length) {
         let month = 0;
         let setMonthly = (value) => month = value; 
         function onSubmit() {
@@ -21,7 +22,7 @@ export default function Landing({budget, setBudget}) {
                         },
                         {
                             text: 'Submit',
-                            onPress: () => setBudget(month)
+                            onPress: () => setBudgetList([new BudgetModel("Spent this Month", month)])
                         }
                     ]
                     )
@@ -52,7 +53,7 @@ export default function Landing({budget, setBudget}) {
     }
     else {
         return (
-            <Main budget={budget} setBudget={setBudget} />
+            <Main budgetList={budgetList} setBudgetList={setBudgetList} />
         );
     }   
 }

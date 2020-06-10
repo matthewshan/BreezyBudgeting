@@ -3,10 +3,10 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import Landing from './views/landing';
 
 export default function App() {
-  const [budget, setBudget] = React.useState(undefined);
+  const [budgetList, setBudgetList] = React.useState([]);
 
   return (
-    <Landing budget={budget} setBudget={setBudget}/>
+    <Landing budgetList={budgetList} setBudgetList={setBudgetList}/>
   );
 }
 
