@@ -20,14 +20,15 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: background,
-      borderWidth: 1  ,
-      margin: 5
+      borderWidth: 1,
+      margin: 15,
+      borderRadius: 12,
+      padding: 15
     },
     title: {
       fontSize: 25,
       textAlign: 'center',
       margin: 10,
-      marginTop: 50,
       color: text,
       fontFamily: 'Roboto' /* Figure out how to import custom fonts" */
     },

@@ -22,7 +22,7 @@ export default function Landing({budgetList, setBudgetList}) {
                         },
                         {
                             text: 'Submit',
-                            onPress: () => setBudgetList([new BudgetModel("Spent this Month", month)])
+                            onPress: () => setBudgetList([new BudgetModel("Main Budget", month)])
                         }
                     ]
                     )

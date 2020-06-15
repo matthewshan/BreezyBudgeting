@@ -2,15 +2,19 @@ import * as React from 'react';
 import { Platform, StyleSheet, View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
 import '../helpers/ColorsConfig';
 import { ScrollView } from 'react-native-gesture-handler';
-import BudgetItem from './components/BudgetItem'
+import BudgetItem from './components/BudgetItem';
+import Header from './components/header';
 
 export default function BudgetPage({budgetList, setBudgetList}) {
     return (
-        <ScrollView>
-            {budgetList.map((budget, index) => {
-                return <BudgetItem key={index} budget={budget} />
-            })}
-        </ScrollView>
+        <>
+            <Header />
+            <ScrollView>
+                {budgetList.map((budget, index) => {
+                    return <BudgetItem key={index} budget={budget} />
+                })}
+            </ScrollView>
+        </>
     )
 }
 
