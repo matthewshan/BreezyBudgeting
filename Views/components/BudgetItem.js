@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Platform, StyleSheet, View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
+import { ProgressChart } from 'react-native-chart-kit';
 import '../../helpers/ColorsConfig';
 
 export default function BudgetItem({budget}) {
@@ -7,11 +8,22 @@ export default function BudgetItem({budget}) {
         <View style={styles.container}>
                 <Text style={styles.title}>{budget.name}</Text>
                 <Text style={styles.text}>Currenty Monthly Budget: ${budget.monthly} </Text>
-                {/* <TouchableOpacity style={styles.button} onPress={() => setBudgetList([])}>
-                    <Text style={styles.buttonText}>Reset</Text>
-                </TouchableOpacity> */}
+                <ProgressChart 
+                 data={{labels:["Spent this month"], data:[0.5]}} 
+                  width={500} //Make it screen width
+                  height={220}
+                  strokeWidth={16}
+                  radius={32}
+                  chartConfig={chartConfig}
+                  hideLegend={false}/>
         </View>
     )
+}
+
+const chartConfig = {
+  backgroundColor: background,
+  backgroundGradientFrom: primary,
+  backgroundGradientTo: secondary,
 }
 
 const styles = StyleSheet.create({
