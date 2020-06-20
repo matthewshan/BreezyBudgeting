@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Platform, StyleSheet, View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
+import * as Progress from 'react-native-progress';
 import '../../helpers/ColorsConfig';
 
 export default function BudgetItem({budget}) {
@@ -7,9 +8,7 @@ export default function BudgetItem({budget}) {
         <View style={styles.container}>
                 <Text style={styles.title}>{budget.name}</Text>
                 <Text style={styles.text}>Currenty Monthly Budget: ${budget.monthly} </Text>
-                {/* <TouchableOpacity style={styles.button} onPress={() => setBudgetList([])}>
-                    <Text style={styles.buttonText}>Reset</Text>
-                </TouchableOpacity> */}
+                <Progress.Circle size={80} progress={0.5} showsText={true} color={primary}/>
         </View>
     )
 }
