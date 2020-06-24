@@ -4,7 +4,7 @@ import { Platform, StyleSheet, View, Text, TextInput, Image, TouchableOpacity, A
 import '../helpers/ColorsConfig'
 import BudgetModel from '../models/BudgetModel'
 
-export default function Landing({budgetList, setBudgetList}) {
+export default function Landing({budgetList, setBudgetList, selectedBudget, setSelectedBudget}) {
     if (!Array.isArray(budgetList) || !budgetList.length) {
         let month = 0;
         let setMonthly = (value) => month = value; 
@@ -53,7 +53,8 @@ export default function Landing({budgetList, setBudgetList}) {
     }
     else {
         return (
-            <Main budgetList={budgetList} setBudgetList={setBudgetList} />
+            <Main budgetList={budgetList} setBudgetList={setBudgetList} 
+                selectedBudget={selectedBudget} setSelectedBudget={setSelectedBudget}/>
         );
     }   
 }

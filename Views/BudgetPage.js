@@ -2,22 +2,24 @@ import * as React from 'react';
 import { Platform, StyleSheet, View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
 import '../helpers/ColorsConfig';
 import { ScrollView } from 'react-native-gesture-handler';
-import BudgetItem from './components/BudgetItem';
+import * as Progress from 'react-native-progress';
 import Header from './components/header';
 
-export default function BudgetPage({budgetList, setBudgetList}) {
+export default function BudgetPage({budgetList, setBudgetList, selectedBudget, setSelectedBudget}) {
+    let budget = budgetList[selectedBudget];
     return (
         <>
             <Header />
             <ScrollView>
-                {budgetList.map((budget, index) => {
-                    return <BudgetItem key={index} budget={budget} />
-                })}
+            <View style={styles.container}>
+                <Text style={styles.title}>{budget.name}</Text>
+                <Text style={styles.text}>Currenty Monthly Budget: ${budget.monthly} </Text>
+                <Progress.Circle size={80} progress={0.5} showsText={true} color={primary}/>
+            </View>
             </ScrollView>
         </>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -25,7 +27,10 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: background,
-      
+      borderWidth: 1,
+      margin: 15,
+      borderRadius: 12,
+      padding: 15
     },
     title: {
       fontSize: 25,
@@ -50,18 +55,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderColor: primary,
         margin: 35,
-        textAlign: 'center',
-    },
-    button: {
-        height: 75,
-        backgroundColor: primary,
-        justifyContent: 'center', 
-        alignItems: 'center',
-    },
-    buttonText: {
-        fontSize: 20,
-        color: background,
-        fontWeight: 'bold',
         textAlign: 'center',
     }
 });
