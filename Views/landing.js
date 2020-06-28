@@ -41,9 +41,9 @@ export default function Landing({budgetList, setBudgetList, selectedBudget, setS
                         onChangeText={text => setMonthly(text)}
                         defaultValue=""
                         keyboardType="decimal-pad"
-                        inlineImageLeft="../assets/money-bag.png"
+                        inlineImageLeft="../assets/images/money-bag.png"
                     />
-                    <Image source={require('../assets/wallet.png')} style={{ width: 307.5, height: 200}}/>
+                    <Image source={require('../assets/images/wallet.png')} style={{ width: 307.5, height: 200}}/>
                 </View>
                 <TouchableOpacity style={styles.button} onPress={onSubmit}>
                     <Text style={styles.buttonText}>Next >>></Text>

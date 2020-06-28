@@ -14,7 +14,9 @@ export default function BudgetPage({budgetList, setBudgetList, selectedBudget, s
             <View style={styles.container}>
                 <Text style={styles.title}>{budget.name}</Text>
                 <Text style={styles.text}>Currenty Monthly Budget: ${budget.monthly} </Text>
-                <Progress.Circle size={80} progress={0.5} showsText={true} color={primary}/>
+
+
+                {/* <Progress.Circle size={80} progress={0.5} showsText={true} color={primary}/> */}
             </View>
             </ScrollView>
         </>
@@ -27,18 +29,15 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: background,
-      borderWidth: 1,
       margin: 15,
-      borderRadius: 12,
       padding: 15
     },
     title: {
       fontSize: 25,
       textAlign: 'center',
       margin: 10,
-      marginTop: 50,
       color: text,
-      fontFamily: 'Roboto' /* Figure out how to import custom fonts" */
+      fontFamily: 'Roboto-Bold.ttf' /* Figure out how to import custom fonts" */
     },
     text: {
       textAlign: 'center',
