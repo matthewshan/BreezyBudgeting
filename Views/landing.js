@@ -8,18 +8,20 @@ import BudgetModel from '../models/BudgetModel'
 
 
 export default function Landing({ budgetList, setBudgetList, selectedBudget, setSelectedBudget}) {
-    const fetchFonts = () => {
-        return Font.loadAsync({
-            'roboto-bold': require('../assets/fonts/Roboto/Roboto-Bold.ttf'),
-            'roboto-italic': require('../assets/fonts/Roboto/Roboto-Italic.ttf'),
-            'roboto-regular': require('../assets/fonts/Roboto/Roboto-Regular.ttf')
+    const fetchFonts = async () => {
+        return await Font.loadAsync({
+            Roboto: require('../assets/fonts/Roboto/Roboto-Regular.ttf'),
+            RobotoBold: require('../assets/fonts/Roboto/Roboto-Bold.ttf'),
+            Nunito: require('../assets/fonts/Nunito/Nunito-Regular.ttf'),
+            NunitoBold: require('../assets/fonts/Nunito/Nunito-Bold.ttf'),
+
         });
     };
     const [dataLoaded, setDataLoaded] = React.useState(false);
 
     if (!dataLoaded) {
         return <AppLoading startAsync={fetchFonts} 
-                    onFinish={() => setDataLoaded(true)}/>;
+                    onFinish={() => setDataLoaded(true)} />;
     } else {
         let styles = getStyles();
         if (!Array.isArray(budgetList) || !budgetList.length) {
@@ -91,13 +93,14 @@ const getStyles = () => StyleSheet.create({
         margin: 10,
         marginTop: 50,
         color: text,
-        fontFamily: 'roboto-regular' /* Figure out how to import custom fonts" */
+        fontFamily: 'NunitoBold'
     },
     text: {
         textAlign: 'center',
         color: text,
         marginBottom: 5,
-        fontFamily: 'roboto-regular'
+        fontFamily: 'Nunito',
+        fontSize: 16
     },
     input: {
         color: primary,
@@ -118,6 +121,7 @@ const getStyles = () => StyleSheet.create({
         alignItems: 'center',
     },
     buttonText: {
+        fontFamily: 'NunitoBold',
         fontSize: 20,
         color: background,
         fontWeight: 'bold',

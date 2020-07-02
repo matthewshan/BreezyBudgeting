@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 20,
         backgroundColor: primary,
-        color: background
+        color: background,
+        fontFamily: 'Nunito',
     },
 })

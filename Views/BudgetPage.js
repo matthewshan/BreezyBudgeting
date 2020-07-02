@@ -6,6 +6,7 @@ import * as Progress from 'react-native-progress';
 import Header from './components/header';
 
 export default function BudgetPage({budgetList, setBudgetList, selectedBudget, setSelectedBudget}) {
+ 
     let budget = budgetList[selectedBudget];
     return (
         <>
@@ -37,12 +38,13 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 10,
       color: text,
-      fontFamily: 'Roboto-Bold.ttf' /* Figure out how to import custom fonts" */
+      fontFamily: 'NunitoBold'
     },
     text: {
       textAlign: 'center',
       color: text,
       marginBottom: 5,
+      fontFamily: 'Nunito'
     },
     input: {
         color: primary,
