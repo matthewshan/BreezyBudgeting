@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Platform, StyleSheet, View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
+import { Platform, StyleSheet, View, Text, TextInput, Image, Button, Alert } from 'react-native';
 import '../helpers/ColorsConfig';
 import { ScrollView } from 'react-native-gesture-handler';
 import * as Progress from 'react-native-progress';
@@ -15,6 +15,19 @@ export default function BudgetPage({budgetList, setBudgetList, selectedBudget, s
             <View style={styles.container}>
                 <Text style={styles.title}>{budget.name}</Text>
                 <Text style={styles.text}>Currenty Monthly Budget: ${budget.monthly} </Text>
+                <View style={styles.spendMoneyBox}>
+                  <TextInput
+                              style={styles.spendMoneyInput}
+                              placeholder="$$$"
+                              type="number" 
+                              onChangeText={() => {}}
+                              defaultValue=""
+                              keyboardType="decimal-pad"
+                          />
+                  <Button title="Spend" color={primary} style={styles.spendMoneyButton}/>
+                  
+                </View>
+                
 
 
                 {/* <Progress.Circle size={80} progress={0.5} showsText={true} color={primary}/> */}
@@ -46,7 +59,11 @@ const styles = StyleSheet.create({
       marginBottom: 5,
       fontFamily: 'Nunito'
     },
-    input: {
+    spendMoneyBox: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    spendMoneyInput: {
         color: primary,
         justifyContent: 'center',
         alignItems: 'center',
@@ -55,7 +72,13 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         borderColor: primary,
-        margin: 35,
+        margin: 15,
         textAlign: 'center',
-    }
+    },
+    spendMoneyButton: {
+      height: 30,
+      width: 30,
+      backgroundColor: primary,
+      padding: 10
+    },
 });

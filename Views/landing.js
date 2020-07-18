@@ -64,8 +64,8 @@ export default function Landing({ budgetList, setBudgetList, selectedBudget, set
                         />
                         <Image source={require('../assets/images/wallet.png')} style={{ width: 307.5, height: 200 }} />
                     </View>
-                    <TouchableOpacity style={styles.button} onPress={onSubmit}>
-                        <Text style={styles.buttonText}>Next >>></Text>
+                    <TouchableOpacity style={styles.nextButton} onPress={onSubmit}>
+                        <Text style={styles.nextButtonText}>Next >>></Text>
                     </TouchableOpacity>
                 </>
             );
@@ -114,13 +114,13 @@ const getStyles = () => StyleSheet.create({
         margin: 35,
         textAlign: 'center',
     },
-    button: {
+    nextButton: {
         height: 75,
         backgroundColor: primary,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    buttonText: {
+    nextButtonText: {
         fontFamily: 'NunitoBold',
         fontSize: 20,
         color: background,
